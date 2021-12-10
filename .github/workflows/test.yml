@@ -15,3 +15,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  AWS-Tests:
+    runs-on: self-hosted
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: us-west-2
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+      - name: test credentials
+        run: aws sts get-caller-identity
