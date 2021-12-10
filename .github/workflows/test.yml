@@ -13,8 +13,6 @@ jobs:
       - name: test credentials
         run: aws sts get-caller-identity
       - name: Terraform init
-        run: |
-          ls 
-          terraform init
+        run: terraform init
       - name: Terraform plan
         run: terraform plan
