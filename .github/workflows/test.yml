@@ -1,7 +1,13 @@
-name: AWS Test
+name: DEV Pipeline
 on: [push]
 jobs:
-  AWS-Tests:
+  Hello:
+    runs-on: self-hosted
+    steps:
+      - name: Configure AWS Credentials
+        run: echo 'Hello'
+  Terraform:
+    needs: Hello
     runs-on: self-hosted
     steps:
       - name: Configure AWS Credentials
