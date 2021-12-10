@@ -8,6 +8,6 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: us-west-2
-          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
+          role-to-assume: arn:aws:iam::985650074831:role/github-actions-Role-NTCHNSWQCBKI
       - name: test credentials
         run: aws sts get-caller-identity
