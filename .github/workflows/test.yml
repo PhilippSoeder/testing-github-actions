@@ -4,7 +4,7 @@ jobs:
   Hello:
     runs-on: self-hosted
     steps:
-      - name: Configure AWS Credentials
+      - name: Say hello
         run: echo 'Hello'
   Terraform:
     needs: Hello
