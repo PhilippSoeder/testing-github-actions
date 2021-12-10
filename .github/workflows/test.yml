@@ -6,7 +6,13 @@ jobs:
     steps:
       - name: Say hello
         run: echo 'Hello'
-  Terraform:
+  Checkout-Code:
+    needs: Hello
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+  Install-and-Configure-Terraform:
     needs: Hello
     runs-on: self-hosted
     steps:
@@ -16,8 +22,10 @@ jobs:
           aws-region: us-west-2
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: Check out repository code
-        uses: actions/checkout@v2
+  Run-Terraform:
+    needs: [Checkout-Code,Install-and-Configure-Terraform]
+    runs-on: self-hosted
+    steps:
       - name: Terraform init
         run: terraform init
       - name: Terraform apply
