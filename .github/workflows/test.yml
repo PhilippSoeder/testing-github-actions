@@ -10,17 +10,9 @@ jobs:
           aws-region: us-west-2
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - name: test credentials
-        run: aws sts get-caller-identity
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: where am i
-        run: pwd
-      - name: list files
-        run: ls -l
       - name: Terraform init
         run: terraform init
-      - name: Terraform plan
-        run: terraform plan
       - name: Terraform apply
         run: terraform apply -auto-approve
