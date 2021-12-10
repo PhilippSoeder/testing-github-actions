@@ -12,3 +12,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: test credentials
         run: aws sts get-caller-identity
+      - name: Terraform init
+        run: terraform init
+      - name: Terraform plan
+        run: terraform plan
