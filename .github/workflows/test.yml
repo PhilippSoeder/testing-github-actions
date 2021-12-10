@@ -12,8 +12,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: test credentials
         run: aws sts get-caller-identity
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: where am i
         run: pwd
+      - name: list files
+        run: ls -l
       - name: Terraform init
         run: terraform init
       - name: Terraform plan
