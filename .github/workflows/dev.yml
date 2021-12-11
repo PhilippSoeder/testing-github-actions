@@ -4,21 +4,21 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  Hello:
+  Say-Hello:
     runs-on: self-hosted
     steps:
       - name: Say hello
         run: echo 'Hello'
 
   Checkout-Code:
-    needs: Hello
+    needs: Say-Hello
     runs-on: self-hosted
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
 
   Install-and-Configure-Terraform:
-    needs: Hello
+    needs: Say-Hello
     runs-on: self-hosted
     steps:
       - name: Configure AWS Credentials
